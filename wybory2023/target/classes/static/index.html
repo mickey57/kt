@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Powieś Tuduja</title>
+    <link rel="icon" type="image/png" href="logoKonf2.png"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+</head>
+
+<body>
+<video autoplay muted loop id="lakeVideo">
+    <source src="lake.mp4" type="video/mp4">
+</video>
+<header>
+    <div id="logo"><img class="img2" src="logoKonf1.png"/></div>
+    <div id="borderBar"><div id="bar"></div></div>
+</header>
+
+<div class="container">
+    <div class="pages">
+        <div class="page one" id="tr1">
+            <div class="pag">
+                <h1 class="question">Czy chcesz mi pomóc?</h1>
+                </br>
+                <img class="baner" src="baner.jpg"/>
+                </br>
+                <div class="but">
+                    <button onclick="slide('banner')" class="button">Tak</button>
+                    <button onclick="slide('wplata2')" class="button">Nie</button>
+                </div>
+            </div>
+        </div>
+        <div class="page two" id="wplata">
+            <div class="pag">
+                <h1 class="question">Super! Podaj dane do kontaktu</h1>
+                <div class="gora">
+                    <form  action="/api/form" method="post" class="formularz" >
+                        <p class="formName">Formularz kontaktowy</p>
+                        <div class="formFull">
+                            <div class="lewa">
+                                <div class="dol1">
+                                    <input type="text" id="firstName" name="firstName" class="data" placeholder="Imię" required/>
+                                </div>
+                                <div class="dol2">
+                                    <input type="text" id="lastName" name="lastName" class="data" placeholder="Nazwisko" required/>
+                                </div>
+                                <div class="dol3">
+                                    <input type="text" id="phone" name="phone" class="data"
+                                           title="Podano numer w postaci 123123123, +48123123123, (kierunkowy)(stacjonarny)-łacznie 9 cyfr"
+                                           pattern="[0-9]{9}|[\+]48[0-9]{9}|[0-9]{7}"
+                                           placeholder="Telefon" required/>
+                                </div>
+                                <div class="dol4">
+                                    <input type="email" id="email" name="email" class="data" placeholder="Email" required/>
+                                </div>
+                                <div class="dol5">
+                                    <input type="text" id="address" name="address" class="data" placeholder="Adres"  />
+                                </div>
+                                <select name="district" id="district">
+                                    <option value="brak">Wybierz powiat</option>
+                                    <option value="Jelenia Góra">Jelenia Góra</option>
+                                    <option value="Legnica">Legnica</option>
+                                    <option value="Wałbrzych">Wałbrzych</option>
+                                    <option value="Wrocław">Wrocław</option>
+                                    <option value="bolesławiecki">bolesławiecki</option>
+                                    <option value="dzierżoniowski">dzierżoniowski</option>
+                                    <option value="głogowski">głogowski</option>
+                                    <option value="górowski">górowski</option>
+                                    <option value="jaworski">jaworski</option>
+                                    <option value="kamiennogórski">kamiennogórski</option>
+                                    <option value="karkonoski">karkonoski</option>
+                                    <option value="kłodzki">kłodzki</option>
+                                    <option value="legnicki">legnicki</option>
+                                    <option value="lubański">lubański</option>
+                                    <option value="lubiński">lubiński</option>
+                                    <option value="lwówecki">lwówecki</option>
+                                    <option value="milicki">milicki</option>
+                                    <option value="oleśnicki">oleśnicki</option>
+                                    <option value="oławski">oławski</option>
+                                    <option value="polkowicki">polkowicki</option>
+                                    <option value="strzeliński">strzeliński</option>
+                                    <option value="średzki">średzki</option>
+                                    <option value="świdnicki">świdnicki</option>
+                                    <option value="trzebnicki">trzebnicki</option>
+                                    <option value="wałbrzyski">wałbrzyski</option>
+                                    <option value="wołowski">wołowski</option>
+                                    <option value="wrocławski">wrocławski</option>
+                                    <option value="ząbkowicki">ząbkowicki</option>
+                                    <option value="zgorzelecki">zgorzelecki</option>
+                                    <option value="złotoryjski">złotoryjski</option>
+                                </select>
+                                <select name="community" id="community"></select>
+                            </div>
+                            <div class="prawa">
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="baner"  name="baner" value="true" />
+                                    <label for="baner" >Powieszę baner</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="plakat"  name="plakat" value="true" />
+                                    <label for="plakat" >Powieszę plakat</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="ulotka"  name="ulotka" value="true" />
+                                    <label for="ulotka" >Rozdam ulotki</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="wolontariat"  name="wolontariat" value="true" />
+                                    <label for="wolontariat" >Zostanę wolontariuszem</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="podpisy"  name="podpisy" value="true" />
+                                    <label for="podpisy" >Pozbieram podpisy</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="komisja"  name="komisja" value="true" />
+                                    <label for="komisja" >Dołączę do komisji wyborczej</label>
+                                </div>
+                                <div class="pole">
+                                    <input type="checkbox" class="dataL" id="inna_pomoc"  name="inna_pomoc" value="true" />
+                                    <label for="inna_pomoc" >Pomogę w inny sposób (wiadomość)</label>
+                                </div>
+                                <div class="pole">
+                                    <textarea placeholder="Wiadomość" class="dataL" id="message" name="message" cols="22" rows="4"></textarea>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="poleRodo">
+                            <input type="checkbox" class="checkRodo" id="rodo_wol"  name="rodo_wol" value="true" required/>
+                            <label for="rodo_wol"  class="dataRodo">
+                                <p class="rodo">Wyrażam zgodę na przetwarzanie moich danych osobowych w zakresie wynikającym z prowadzenia działalności poselskiej oraz w celach informacyjnych i promocyjnych związanych z działalnością Ruchu Narodowego i Fundacji Piastowskiej, zgodnie z przepisami rozporządzenia Parlamentu Europejskiego i Rady UE 2016/679 z dnia 27.04.2016 r. w sprawie ochrony osób fizycznych w związku z przetwarzaniem danych osobowych oraz zgodnie z ustawą z dnia 10.05.2018 r. o ochronie danych osobowych (Dz. U. 2018.1000).</p>
+                            </label>
+                        </div>
+                        <div class="butsin">
+                            <button onsubmit="slide('wplata')"  class="button" type="submit">Wyślij</button>
+                          <!--  <input onsubmit="slide('wplata')" class="button" value="Wyślij" type="submit"> -->
+                        </div>
+                    </form>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                    <script src='scriptForm.js' type="text/javascript"></script>
+                </div>
+            </div>
+        </div>
+
+        <div class="page three" id="tr3">
+            <div class="pag">
+                <h1 class="questionth">Czy chcesz wesprzeć kampanię finansowo?</h1>
+                <div class="but">
+                    <button onclick="slide('przelew')" class="button">Tak</button>
+                    <button onclick="slide('koniec2')" class="button">Nie</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="page four" id="tr4">
+            <div class="pag">
+                <h1 class="question4">Wpłać na podany niżej numer konta</h1>
+                <div class="num">
+                <div class="nrKonta"><b>38 1020 1026 0000 1802 0395 5127</b></div>
+                <button class="numbut" onclick="copyNum()">Kopiuj</button>
+                </div>
+                <div class="danePrzelewu"><b>Tytuł przelewu:</b> Darowizna. Mieszkam w Polsce i jestem polskim obywatelem. Wsparcie dla kandydata: Krzysztof Tuduj<br/>
+                    <br/>
+                    <b>Nazwa i adres odbiorcy:</b> Konfederacja Wolność i Niepodległość, ul. Piękna 24/26a, 00-549 Warszawa</div>
+                <div class="fooB">
+                    <div class="foo">
+                        <h2 class="uwaga">UWAGA!</h2></div>
+                    <br/>
+                    <div class="foo2">
+                        Niedopuszczalne jest wykonywanie przelewu: z rachunku firmowego lub zagranicznego, poprzez internetowych pośredników płatności, przez osoby, które nie posiadają obywatelstwa polskiego lub nie mieszkają na stałe w Polsce.
+                        </br><br/>
+                        W wyżej wymienionych przypadkach środki zostaną zwrócone lub przekazane na rzecz Skarbu Państwa.
+                        Łączna kwota wpłat od jednego darczyńcy w całym roku 2023 nie może przekraczać 52 350 złotych
+                        Partia zobowiązana jest do prowadzenia dostępnego online rejestru wpłat, do którego wpisany zostanie (z imienia i nazwiska, daty oraz kwoty wpłat)
+                        każdy Darczyńca, którego suma wpłat przekroczy 10 000 złotych.
+                        Dane Darczyńców wpłacających mniejsze kwoty nie będą publikowane w Internecie (chyba że Darczyńca sobie tego życzy).
+                    </div>
+                </div>
+                <div class="butsin">
+                    <button onclick="slide('koniec')" class="button">Dalej</button>
+                </div>
+            </div>
+        </div>
+        <div class="page five">
+            <div class="pag">
+                <img class="dzieki" src="KT.png"/>
+                <h1 class="question">Dzięki za Twoją pomoc!</h1></br>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
